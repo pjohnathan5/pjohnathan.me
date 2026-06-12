@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Site</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F0F0EE;
+      font-family: system-ui, sans-serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #e0e0de;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #888;
+      padding: 0.25rem 0;
+    }
+
+    nav button.active {
+      color: #1a1a1a;
+      font-weight: 600;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .page { display: none; padding: 4rem 2rem; }
+    .page.visible { display: block; }
+
+    h1 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    p  { color: #555; line-height: 1.6; max-width: 480px; }
+
+    .btn {
+      margin-top: 1.5rem;
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover { background: #333; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button id="tab-home" class="active" onclick="show('home')">Home</button>
+    <button id="tab-blog" onclick="show('blog')">Blog</button>
+  </nav>
+
+  <div id="page-home" class="page visible">
+    <h1>Welcome</h1>
+    <p>A simple, clean starting point for your site.</p>
+    <button class="btn">Get started</button>
+  </div>
+
+  <div id="page-blog" class="page">
+    <h1>Blog</h1>
+    <p>No posts yet. Check back soon.</p>
+  </div>
+
+  <script>
+    function show(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('visible');
+      document.getElementById('tab-' + name).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
